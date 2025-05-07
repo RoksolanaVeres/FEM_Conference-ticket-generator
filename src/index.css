@@ -23,9 +23,115 @@
 body {
   min-height: 100vh;
   text-align: center;
-  background-image: url("./assets/images/pattern-lines.svg"), url("./assets/images/background-desktop.png");
+  background-image: url("./assets/images/pattern-lines.svg"),
+    url("./assets/images/background-desktop.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   padding: 35px;
+}
+
+.container--main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 45px;
+  color: var(--neutral-0);
+  line-height: 52px;
+  padding: 30px;
+}
+
+header p {
+  color: var(--neutral-300);
+  font-size: 20px;
+}
+
+form {
+  display: grid;
+  gap: 25px;
+  padding: 50px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+label {
+  color: var(--neutral-300);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.form-field {
+  display: grid;
+  text-align: left;
+  gap: 10px;
+}
+
+input {
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="email"] {
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  outline: 2px solid var(--neutral-500);
+}
+
+input:hover {
+  background-color: var(--neutral-700);
+}
+
+button {
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  height: 50px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--orange-700);
+  color: var(--neutral-900);
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.file-input-container {
+  width: 100%;
+  padding: 20px;
+  border: none;
+  outline: 2px dashed var(--neutral-500);
+  border-radius: 10px;
+  display: grid;
+  gap: 15px;
+  text-align: center;
+}
+
+.file-info {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: var(--neutral-300);
+  font-size: 8px;
+  margin-top: -10px;
+}
+
+.uploadBtn {
+  border: none;
+  background-color: var(--neutral-700);
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  justify-self: center;
+}
+
+.inputText {
+  color: var(--neutral-300);
+  font-size: 14px;
 }

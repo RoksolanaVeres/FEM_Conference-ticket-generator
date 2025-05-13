@@ -7,10 +7,7 @@ export default function App() {
     <div className="container--main">
       <header>
         <img src={logo} className="logo" />
-        <h1>
-          Your Journey to Coding Conf <br />
-          2025 Starts Here!
-        </h1>
+        <h1>Your Journey to Coding Conf 2025 Starts Here!</h1>
         <p>Secure your spot at next year's biggest coding conference.</p>
       </header>
       <main>

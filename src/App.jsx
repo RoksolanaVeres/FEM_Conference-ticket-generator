@@ -6,7 +6,7 @@ import { useState } from "react";
 import Ticket from "./components/Ticket";
 
 export default function App() {
-  const [ticketIsGenerated, setTicketIsGenerated] = useState(true);
+  const [ticketIsGenerated, setTicketIsGenerated] = useState(false);
   return (
     <div className="container--main">
       <Header />

@@ -1,4 +1,4 @@
-export default function Instructions(ticketIsGenerated) {
+export default function Instructions({ ticketIsGenerated }) {
   return (
     <p className="instructions-text">
       {ticketIsGenerated

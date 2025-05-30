@@ -120,22 +120,49 @@ input[type="file"] {
   cursor: pointer;
 }
 
-.file-info {
+.input-notification {
   display: flex;
   gap: 5px;
   align-items: center;
   color: var(--neutral-300);
   font-size: 8px;
-  margin-top: -10px;
+  padding-top: 10px;
 }
 
-.uploadBtn {
-  border: none;
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.input-error {
+  color: var(--orange-700);
+}
+
+.uploadIcon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--neutral-500);
   background-color: var(--neutral-700);
   height: 50px;
   width: 50px;
   border-radius: 10px;
   justify-self: center;
+}
+
+.avatarPreview {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  justify-self: center;
+  object-fit: cover;
+}
+
+.file-error {
+  color: var(--orange-700);
 }
 
 .inputText {

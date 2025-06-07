@@ -1,43 +1,28 @@
 import uploadIcon from "../assets/images/icon-upload.svg";
 import infoIcon from "../assets/images/icon-info.svg";
-import { useState } from "react";
+import { formErrorsInitialState, userInfoInitialState } from "../constants";
 
-export default function Form() {
-  // const [avatarError, setAvatarError] = useState(null);
-  const [userInfo, setUserInfo] = useState({
-    fullName: "",
-    email: "",
-    username: "",
-    avatarFile: null,
-    avatarPreview: null,
-  });
-
-  const [formErrors, setFormErrors] = useState({
-    fullNameError: null,
-    emailError: null,
-    usernameError: null,
-    avatarError: null,
-  });
-
+export default function Form({
+  setTicketIsGenerated,
+  userInfo,
+  setUserInfo,
+  formErrors,
+  setFormErrors,
+}) {
   function handleInputChange(e) {
     const name = e.target.name;
     const value = e.target.value;
 
-    if (value === "") {
-      setFormErrors((prev) => ({
-        ...prev,
-        [name + "Error"]: `This is a required field. Please enter your ${name}`,
-      }));
-    } else {
-      setUserInfo((prevInfo) => ({
-        ...prevInfo,
-        [name]: value,
-      }));
-      setFormErrors((prev) => ({
-        ...prev,
-        [name + "Error"]: null,
-      }));
-    }
+    setFormErrors((prev) => ({
+      ...prev,
+      [name + "Error"]:
+        value.trim() === "" ? `This is a required field. Please enter your ${name}` : null,
+    }));
+
+    setUserInfo((prevInfo) => ({
+      ...prevInfo,
+      [name]: value,
+    }));
   }
 
   function handleFileChange(e) {
@@ -68,8 +53,21 @@ export default function Form() {
     reader.readAsDataURL(file);
   }
 
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const isValid = userInfo.fullName && userInfo.email && userInfo.username && userInfo.avatarFile;
+
+    if (!isValid) {
+      alert("Please complete all required fields correctly");
+      return;
+    }
+
+    console.log("Submitted data:", userInfo);
+    setTicketIsGenerated(true);
+  }
+
   return (
-    <form>
+    <form onSubmit={handleFormSubmit}>
       <div className="form-field">
         <label htmlFor="avatar">
           <p className="label-text">Upload Avatar</p>
@@ -112,6 +110,7 @@ export default function Form() {
           name="fullName"
           className="inputText"
           onChange={handleInputChange}
+          value={userInfo.fullName}
         />
         {formErrors.fullNameError && (
           <div className="input-notification ">
@@ -131,6 +130,7 @@ export default function Form() {
           placeholder="example@email.com"
           className="inputText"
           onChange={handleInputChange}
+          value={userInfo.email}
         />
         {formErrors.emailError && (
           <div className="input-notification ">
@@ -150,6 +150,7 @@ export default function Form() {
           placeholder="@yourusername"
           className="inputText"
           onChange={handleInputChange}
+          value={userInfo.username}
         />
         {formErrors.usernameError && (
           <div className="input-notification ">

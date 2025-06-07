@@ -1,14 +1,17 @@
 import TicketPattern from "../assets/images/pattern-ticket.svg";
 import logoMark from "../assets/images/logo-mark.svg";
-import avatar from "../assets/images/image-avatar.jpg";
 import gitHubIcon from "../assets/images/icon-github.svg";
 
-export default function Ticket() {
+function getRandomNumber() {
+  return Math.floor(Math.random() * 100000);
+}
+
+export default function Ticket({ userInfo }) {
   return (
     <div className="ticketContainer">
       <img className="ticketPattern" src={TicketPattern} />
       <div className="ticketInnerContainer">
-        <div className="ticketNumber">#01609</div>
+        <div className="ticketNumber">#{getRandomNumber()}</div>
         <div className="conferenceData">
           <img src={logoMark} />
           <div className="conferenceDataText">
@@ -17,12 +20,12 @@ export default function Ticket() {
           </div>
         </div>
         <div className="participantData">
-          <img src={avatar} className="participantAvatar" />
+          <img src={userInfo.avatarPreview} className="participantAvatar" />
           <div className="participantDataText">
-            <p className="participantName">Jonatan Kristof</p>
+            <p className="participantName">{userInfo.fullName}</p>
             <div className="participantGithubContainer">
               <img src={gitHubIcon} className="githubIcon" />
-              <p className="githubUserName">@jonatankristof0101</p>
+              <p className="githubUserName">{userInfo.email}</p>
             </div>
           </div>
         </div>
